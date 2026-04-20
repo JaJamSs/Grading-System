@@ -1,0 +1,41 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Departments{% endblock %}
+
+{% block header %}
+Departments
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'core/grading.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- Header -->
+<div class="grading-header">
+    <h1>Departments</h1>
+    <p>Manage all departments in the system</p>
+</div>
+
+<!-- Add Button -->
+<a href="{% url 'grading_system:add_department' %}" class="add-btn">
+    + Add Department
+</a>
+
+<!-- Department Grid -->
+<div class="dept-grid">
+
+    {% for dept in departments %}
+    <div class="dept-card">
+        <h3>{{ dept.name }}</h3>
+        <p>{{ dept.description|default:"No description" }}</p>
+    </div>
+    {% empty %}
+    <p>No departments yet.</p>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

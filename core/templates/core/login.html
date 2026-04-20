@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        {% if form.errors %}
+            <div class="error">Invalid username or password</div>
+        {% endif %}
+        <form method="post">
+            {% csrf_token %}
+            <div>
+                <label for="id_username">Username:</label>
+                {{ form.username }}
+            </div>
+            <div>
+                <label for="id_password">Password:</label>
+                {{ form.password }}
+            </div>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</body>
+</html>

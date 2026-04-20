@@ -1,0 +1,64 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Courses{% endblock %}
+
+{% block header %}
+Courses / Subjects
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'core/grading.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<a href="{% url 'grading_system:add_course' %}" class="add-btn">
+    + Add Course
+</a>
+
+<div class="accordion">
+
+    {% for dept in departments %}
+    <div class="accordion-item">
+
+        <!-- CLICKABLE HEADER -->
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+            <h3>{{ dept.name }}</h3>
+            <span>▼</span>
+        </div>
+
+        <!-- DROPDOWN CONTENT -->
+        <div class="accordion-content">
+            
+            {% if dept.courses.all %}
+                {% for course in dept.courses.all %}
+                <div class="course-row">
+                    <strong>{{ course.code }}</strong> - {{ course.name }}
+                    <span>
+                        Year {{ course.get_year_level_display }} |
+                        {{ course.get_semester_display }} |
+                        {{ course.credits }} credits
+                    </span>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p>No courses in this department.</p>
+            {% endif %}
+
+        </div>
+
+    </div>
+    {% endfor %}
+
+</div>
+
+<!-- JS -->
+<script>
+function toggleAccordion(header) {
+    const content = header.nextElementSibling;
+    content.classList.toggle("active");
+}
+</script>
+
+{% endblock %}

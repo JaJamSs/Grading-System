@@ -1,0 +1,173 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard Test</title>
+    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f7f9;
+            display: flex;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 200px;
+            background: #2575fc;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding-top: 20px;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 22px;
+        }
+
+        .sidebar a {
+            color: #fff;
+            text-decoration: none;
+            padding: 15px 20px;
+            display: block;
+            transition: background 0.3s;
+        }
+
+        .sidebar a:hover {
+            background: #6a11cb;
+        }
+
+        /* Main content */
+        .main-content {
+            flex: 1;
+            padding: 20px 30px;
+            position: relative; /* for logout button positioning */
+        }
+
+        /* Navbar */
+        .navbar {
+    display: flex;
+    justify-content: space-between; /* username left, logout right */
+    align-items: center;
+    background: #fff;
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+}
+
+        .navbar h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #333;
+        }
+
+        /* Cards */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(0,0,0,0.15);
+        }
+
+        .card h3 {
+            color: #2575fc;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .card span {
+            display: block;
+            font-size: 14px;
+            color: #777;
+            margin-top: 5px;
+        }
+
+        /* Logout button bottom-right */
+.logout-btn {
+    background: #2575fc;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.logout-btn:hover {
+    background: #6a11cb;
+    transform: translateY(-2px);
+}
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Admin</h2>
+        <a href="{% url 'dashboard_test' %}">Dashboard</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="navbar">
+            <h1>Welcome, {{ user.username }}</h1>
+            <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button class="logout-btn" type="submit">Logout</button>
+    </form>
+        </div>
+
+        <div class="cards">
+            <div class="card">
+                <h3>This is a secret button</h3>
+                <a href="{% url 'grading_system:grading_home' %}" class="dashboard-btn">...</a>
+                    ...
+                </button></a>
+                <span>Very secret</span>
+            </div>
+            <div class="card">
+                <h3>Sales</h3>
+                <p>$5,400</p>
+                <span>This month revenue</span>
+            </div>
+            <div class="card">
+                <h3>Orders</h3>
+                <p>85</p>
+                <span>New orders</span>
+            </div>
+            <div class="card">
+                <h3>Messages</h3>
+                <p>23</p>
+                <span>Unread messages</span>
+            </div>
+        </div>
+
+        
+    </div>
+    
+</body>
+</html>

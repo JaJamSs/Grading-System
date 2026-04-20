@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}System{% endblock %}</title>
+
+    <!-- GLOBAL CSS -->
+    <link rel="stylesheet" href="{% static 'core/dashboard.css' %}">
+
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <h2>Admin</h2>
+        <a href="{% url 'dashboard_test' %}">Dashboard</a>
+        <a href="{% url 'grading_system:grading_home' %}">Home</a>
+        <a href="{% url 'grading_system:department_list' %}">Departments</a>
+        <a href="{% url 'grading_system:course_list' %}">Courses</a>
+        <a href="{% url 'grading_system:faculty_list' %}">Faculty</a>
+        <a href="{% url 'grading_system:section_list' %}">Section</a>
+    </div>
+
+    <!-- MAIN -->
+    <div class="main-content">
+
+        <!-- NAVBAR -->
+        <div class="navbar">
+            <h1>{% block header %}Welcome{% endblock %}</h1>
+
+            <form method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button class="logout-btn">Logout</button>
+            </form>
+        </div>
+
+        <!-- PAGE CONTENT -->
+        {% block content %}
+        {% endblock %}
+
+    </div>
+
+</body>
+</html>

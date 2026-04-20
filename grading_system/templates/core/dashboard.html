@@ -1,0 +1,24 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="cards">
+
+    <div class="card">
+        <h3>Secret Button</h3>
+        <a href="{% url 'grading_system:grading_home' %}">Open</a>
+    </div>
+
+    <div class="card">
+        <h3>Sales</h3>
+        <p>$5,400</p>
+    </div>
+
+    <div class="card">
+        <h3>Orders</h3>
+        <p>85</p>
+    </div>
+
+</div>
+{% endblock %}

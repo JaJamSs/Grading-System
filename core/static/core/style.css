@@ -1,0 +1,89 @@
+/* Global body style */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Centered container for login/home */
+.login-container {
+    background: #ffffff;
+    padding: 40px 35px;
+    border-radius: 12px;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
+    width: 380px;
+    text-align: center;
+}
+
+/* Headings */
+h2 {
+    color: #333333;
+    margin-bottom: 30px;
+    font-size: 28px;
+}
+
+/* Form inputs */
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 14px;
+    margin: 10px 0 20px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #2575fc;
+    outline: none;
+}
+
+/* Buttons */
+button {
+    width: 100%;
+    padding: 14px;
+    background-color: #2575fc;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #6a11cb;
+}
+
+/* Error messages */
+.error {
+    color: red;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+/* Links */
+a {
+    text-decoration: none;
+    color: #2575fc;
+    display: block;
+    margin-top: 15px;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #6a11cb;
+}
+
+/* Home page container tweaks */
+.home-container p {
+    margin: 20px 0 25px 0;
+    font-size: 16px;
+    color: #555;
+}

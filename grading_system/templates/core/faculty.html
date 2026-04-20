@@ -1,0 +1,21 @@
+{% extends 'core/base.html' %}
+
+{% block header %}Faculty{% endblock %}
+
+{% block content %}
+
+<a href="{% url 'grading_system:add_faculty' %}" class="add-btn">
+    + Add Faculty
+</a>
+
+<div class="dept-grid">
+    {% for f in faculty %}
+    <div class="dept-card">
+        <h3>{{ f.name }}</h3>
+    </div>
+    {% empty %}
+    <p>No faculty yet.</p>
+    {% endfor %}
+</div>
+
+{% endblock %}

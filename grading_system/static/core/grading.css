@@ -1,0 +1,221 @@
+.grading-header {
+    background: linear-gradient(135deg, #2575fc, #6a11cb);
+    color: white;
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.grading-header h1 {
+    margin: 0;
+}
+
+.grading-header p {
+    margin-top: 10px;
+    opacity: 0.9;
+}
+
+.table-box {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+
+/* Department page header */
+.grading-header {
+    background: linear-gradient(135deg, #2575fc, #6a11cb);
+    color: white;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+/* Add button */
+.add-btn {
+    display: inline-block;
+    margin-bottom: 20px;
+    background: #2575fc;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.add-btn:hover {
+    background: #6a11cb;
+}
+
+/* Department cards */
+.dept-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.dept-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Grid (reuse cards but tighter spacing) */
+.dept-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+/* Add Department Page Container */
+.form-box {
+    background: white;
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+/* Form fields */
+form p {
+    margin-bottom: 15px;
+}
+
+form input,
+form textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    outline: none;
+    transition: 0.3s;
+}
+
+form input:focus,
+form textarea:focus {
+    border-color: #2575fc;
+    box-shadow: 0 0 5px rgba(37,117,252,0.3);
+}
+
+/* Save button (reuse style but improved) */
+.save-btn {
+    background: #2575fc;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    transition: 0.3s;
+}
+
+.save-btn:hover {
+    background: #6a11cb;
+}
+
+/* Add button */
+.add-btn {
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 10px 16px;
+    background: #2575fc;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.add-btn:hover {
+    background: #6a11cb;
+}
+
+/* Grid layout */
+.dept-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+/* Course card */
+.dept-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.dept-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px rgba(0,0,0,0.12);
+}
+
+.dept-card h3 {
+    margin-bottom: 10px;
+    color: #2575fc;
+}
+
+.dept-card p {
+    margin: 5px 0;
+    color: #444;
+    font-size: 14px;
+}
+
+/* ACCORION */
+
+/* Accordion container */
+.accordion {
+    margin-top: 20px;
+}
+
+/* Each department block */
+.accordion-item {
+    background: white;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+/* Header */
+.accordion-header {
+    padding: 15px 20px;
+    background: #2575fc;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Dropdown content */
+.accordion-content {
+    display: none;
+    padding: 15px 20px;
+    background: #f9f9f9;
+}
+
+/* Show when active */
+.accordion-content.active {
+    display: block;
+}
+
+/* Course rows */
+.course-row {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+}
+
+.course-row:last-child {
+    border-bottom: none;
+}
+
+.course-row span {
+    display: block;
+    color: #666;
+    font-size: 13px;
+}

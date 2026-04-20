@@ -1,0 +1,26 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block title %}Grading System{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'core/grading.css' %}">
+{% endblock %}
+
+{% block header %}
+Grading System
+{% endblock %}
+
+{% block content %}
+
+<div class="grading-header">
+    <h1>Student Grades</h1>
+    <p>Manage and view student performance</p>
+</div>
+
+<div class="table-box">
+    <p>👉 You can put tables or forms here later</p>
+</div>
+
+{% endblock %}
