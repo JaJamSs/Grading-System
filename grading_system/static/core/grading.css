@@ -216,6 +216,138 @@ form textarea:focus {
 
 .course-row span {
     display: block;
-    color: #666;
+    color: #ce4747;
     font-size: 13px;
+}
+
+/* Form container */
+.form-box {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 25px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    font-family: Arial, sans-serif;
+}
+
+/* Each form field block */
+.form-box div {
+    margin-bottom: 18px;
+}
+
+/* Labels */
+.form-box label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #333;
+}
+
+/* Inputs + Django form fields */
+.form-box input,
+.form-box select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: 0.2s ease;
+    background: #fff;
+}
+
+/* Focus effect */
+.form-box input:focus,
+.form-box select:focus {
+    border-color: #4a90e2;
+    outline: none;
+    box-shadow: 0 0 5px rgba(74, 144, 226, 0.3);
+}
+
+/* Custom dropdown arrow styling */
+.form-box select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg fill='%23333' height='10' viewBox='0 0 20 20'%3E%3Cpath d='M5 7l5 5 5-5H5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 14px;
+    cursor: pointer;
+}
+
+/* Submit button (if you add one later) */
+.form-box button {
+    width: 100%;
+    padding: 10px;
+    background: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.form-box button:hover {
+    background: #357bd8;
+}
+
+.kanban-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Card style */
+.kanban-card {
+    display: block;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #333;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    transition: 0.2s ease;
+}
+
+/* Hover effect */
+.kanban-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+/* Section header */
+.section-header {
+    margin-bottom: 20px;
+}
+
+/* Table container */
+.student-table {
+    margin-top: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+/* Header */
+.table-header {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    background: #4a90e2;
+    color: white;
+    padding: 12px;
+    font-weight: bold;
+}
+
+/* Rows */
+.table-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    padding: 10px 12px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Hover effect */
+.table-row:hover {
+    background: #f9f9f9;
 }

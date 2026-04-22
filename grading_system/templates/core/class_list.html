@@ -1,25 +1,28 @@
 {% extends 'core/base.html' %}
 {% load static %}
 
-{% block header %}Sections{% endblock %}
+{% block header %}Class List{% endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'core/grading.css' %}">
 {% endblock %}
+
 {% block content %}
 
-<a href="{% url 'grading_system:add_section' %}" class="add-btn">
-    + Add Section
-</a>
+<div class="kanban-container">
 
-<div class="dept-grid">
     {% for s in sections %}
-    <div class="dept-card">
+    <a href="{% url 'grading_system:section_detail' s.id %}" class="kanban-card">
+
         <h3>{{ s.name }}</h3>
+
         <p><b>Course:</b> {{ s.course.name }}</p>
-        <p><b>Faculty:</b> {{ s.faculty.name }}</p>
-    </div>
+
+        <p><b>Instructor:</b> {{ s.faculty.name }}</p>
+
+    </a>
     {% endfor %}
+
 </div>
 
 {% endblock %}

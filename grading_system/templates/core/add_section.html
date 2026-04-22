@@ -11,10 +11,95 @@
 
 <div class="form-box">
     <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button class="save-btn">Save</button>
-    </form>
+    {% csrf_token %}
+        <div>
+        <label for="id_faculty">Instructor</label>
+        {{ form.faculty }}
+        </div>
+
+        <div>
+        <label for="id_name">Section Name</label>
+        {{ form.name }}
+        </div>
+
+        <div>
+            <label for="id_department">Department</label>
+            {{ form.department }}
+        </div>
+
+        <div>
+            <label for="id_course">Course</label>
+
+            <select name="{{ form.course.name }}" id="id_course">
+            <option value="">Select Course</option>
+
+             {% for c in form.course.field.queryset %}
+            <option 
+                value="{{ c.id }}"
+                data-department="{{ c.department.id }}"
+            >
+                {{ c.name }}
+            </option>
+        {% endfor %}
+   </select>
 </div>
 
+<button class="save-btn" type="submit">Save</button>
+
+<hr>
+
+<h2>Faculty List</h2>
+
+<div class="dept-grid">
+    {% for f in faculty %}
+    <div class="dept-card">
+        <h3>{{ f.name }}</h3>
+    </div>
+    {% empty %}
+    <p>No faculty yet.</p>
+    {% endfor %}
+</div>
+
+<div style="display: flex; gap: 20px; align-items: flex-start;">
+
+    <div style="flex: 1;">
+        <!-- FORM HERE -->
+    </div>
+
+    <div style="flex: 1;">
+        <!-- FACULTY LIST HERE -->
+    </div>
+
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    const deptSelect = document.getElementById('id_department');
+    const courseSelect = document.getElementById('id_course');
+
+    const allOptions = Array.from(courseSelect.options).map(opt => opt.cloneNode(true));
+
+    function filterCourses() {
+        const deptId = deptSelect.value;
+
+        courseSelect.innerHTML = '<option value="">Select Course</option>';
+
+        // ❗ DO NOT show anything if no department selected
+        if (!deptId) return;
+
+        allOptions.forEach(option => {
+            if (!option.value) return;
+
+            if (option.dataset.department === deptId) {
+                courseSelect.appendChild(option.cloneNode(true));
+            }
+        });
+    }
+
+    deptSelect.addEventListener('change', filterCourses);
+
+    filterCourses();
+});
+</script>
 {% endblock %}

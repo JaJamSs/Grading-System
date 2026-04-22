@@ -1,0 +1,45 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block header %}{{ section.name }}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'core/grading.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- SECTION INFO -->
+<div class="section-header">
+    <h2>{{ section.name }}</h2>
+    <p><b>Course:</b> {{ section.course.name }}</p>
+    <p><b>Instructor:</b> {{ section.faculty.name }}</p>
+</div>
+
+<hr>
+
+<!-- ACTION BUTTON -->
+<a href="{% url 'grading_system:add_class_list' %}" class="add-btn">
+    + Add Students
+</a>
+
+<!-- STUDENT LIST -->
+<div class="student-table">
+
+    <div class="table-header">
+        <div>ID Number</div>
+        <div>Name</div>
+    </div>
+
+    {% for student in section.student_set.all %}
+    <div class="table-row">
+        <div>{{ student.student_id }}</div>
+        <div>{{ student.name }}</div>
+    </div>
+    {% empty %}
+    <p>No students in this section yet.</p>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

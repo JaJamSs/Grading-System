@@ -12,16 +12,33 @@
 </head>
 <body>
 
-    <!-- SIDEBAR -->
-    <div class="sidebar">
-        <h2>Admin</h2>
-        <a href="{% url 'dashboard_test' %}">Dashboard</a>
-        <a href="{% url 'grading_system:grading_home' %}">Home</a>
-        <a href="{% url 'grading_system:department_list' %}">Departments</a>
-        <a href="{% url 'grading_system:course_list' %}">Courses</a>
-        <a href="{% url 'grading_system:faculty_list' %}">Faculty</a>
-        <a href="{% url 'grading_system:section_list' %}">Section</a>
+<!-- SIDEBAR -->
+<div class="sidebar">
+    <h2>Admin</h2>
+
+    <a href="{% url 'dashboard_test' %}">Dashboard</a>
+    <a href="{% url 'grading_system:grading_home' %}">Home</a>
+    <a href="{% url 'grading_system:department_list' %}">Departments</a>
+    <a href="{% url 'grading_system:course_list' %}">Courses</a>
+    <a href="{% url 'grading_system:faculty_list' %}">Faculty</a>
+    <a href="{% url 'grading_system:section_list' %}">Section</a>
+
+    <!-- STUDENTS DROPDOWN -->
+    <div class="dropdown">
+
+        <a class="dropdown-btn" onclick="toggleDropdown(event)">
+            Students ▾
+        </a>
+            <div id="studentMenu" class="dropdown-content">
+            <a href="{% url 'grading_system:class_list' %}" > Class list</a>
+            <a href="{% url 'grading_system:add_class_list' %}">Add Class List</a>
+                {% comment %}
+            <a href="{% url 'grading_system:add_student' %}">Add Individual Student</a>
+                {% endcomment %}
+            </div>
+        </div>
     </div>
+
 
     <!-- MAIN -->
     <div class="main-content">
@@ -44,3 +61,12 @@
 
 </body>
 </html>
+
+<script>
+function toggleDropdown(event) {
+    event.preventDefault();
+
+    const menu = document.getElementById("studentMenu");
+    menu.classList.toggle("show");
+}
+</script>

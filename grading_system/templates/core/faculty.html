@@ -1,6 +1,11 @@
 {% extends 'core/base.html' %}
+{% load static %}
 
 {% block header %}Faculty{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'core/grading.css' %}">
+{% endblock %}
 
 {% block content %}
 

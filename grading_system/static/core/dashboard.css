@@ -83,3 +83,33 @@ body {
 .logout-btn:hover {
     background: #6a11cb;
 }
+
+/* Sidebar base */
+.sidebar {
+    width: 250px;
+}
+
+/* dropdown hidden by default */
+.dropdown-content {
+    display: none;
+    padding-left: 20px;
+}
+
+/* show when active */
+.dropdown-content.show {
+    display: block;
+}
+
+/* links */
+.dropdown-btn {
+    display: block;
+    cursor: pointer;
+    padding: 10px;
+}
+
+/* MOBILE: sidebar becomes full width */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+    }
+}

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .models import Department, Course, Faculty
-from .forms import DepartmentForm, CourseForm, FacultyForm
+from .models import Department, Course, Faculty, Section, Student
+from .forms import DepartmentForm, CourseForm, FacultyForm, SectionForm, ClassListUploadForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
@@ -103,16 +103,68 @@ def add_faculty(request):
 
     return render(request, 'core/add_faculty.html', {'form': form})
 
-
 def section_list(request):
-    sections = Section.objects.select_related('course', 'faculty').all()
+    sections = Section.objects.select_related('course').all()
     return render(request, 'core/sections.html', {'sections': sections})
 
-
 def add_section(request):
-    form = SectionForm(request.POST or None)
-    if form.is_valid():
-        form.save()
-        return redirect('grading_system:section_list')
+    if request.method == 'POST':
+        form = SectionForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('grading_system:section_list')  # or wherever you want
+    else:
+        form = SectionForm()
 
-    return render(request, 'core/add_section.html', {'form': form})
+    faculty = Faculty.objects.all()
+
+    return render(request, 'core/add_section.html', {
+        'form': form,
+        'faculty': faculty
+    })
+
+def class_list(request):
+    sections = Section.objects.all()
+
+    return render(request, 'core/class_list.html', {
+        'sections': sections
+    })
+
+def section_detail(request, id):
+    section = Section.objects.get(id=id)
+
+    return render(request, 'core/section_detail.html', {
+        'section': section
+    })
+
+def add_class_list(request):
+    if request.method == "POST":
+        form = ClassListUploadForm(request.POST)
+
+        if form.is_valid():
+            section = form.cleaned_data['section']
+            data = form.cleaned_data['data']
+
+            lines = data.strip().split("\n")
+
+            for line in lines:
+                parts = line.split("\t")  # Excel copy-paste uses TAB
+
+                if len(parts) >= 2:
+                    student_id = parts[0].strip()
+                    name = parts[1].strip()
+
+                    Student.objects.create(
+                        student_id=student_id,
+                        name=name,
+                        section=section
+                    )
+
+            return redirect('grading_system:class_list')
+
+    else:
+        form = ClassListUploadForm()
+
+    return render(request, 'core/add_class_list.html', {
+        'form': form
+    })
