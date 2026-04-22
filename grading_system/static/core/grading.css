@@ -351,3 +351,10 @@ form textarea:focus {
 .table-row:hover {
     background: #f9f9f9;
 }
+
+/* Page title */
+h2 {
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: #333;
+}
